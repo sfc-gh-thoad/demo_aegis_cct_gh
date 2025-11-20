@@ -73,7 +73,7 @@ def main():
         st.divider()
         
         # Refresh button
-        if st.button("🔄 Refresh Data", type="primary", use_container_width=True, help="Reconnect to Snowflake and refresh all data"):
+        if st.button("🔄 Refresh Data", use_container_width=True, help="Reconnect to Snowflake and refresh all data"):
             # Clear all caches
             st.cache_resource.clear()
             st.cache_data.clear()
