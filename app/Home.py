@@ -35,9 +35,22 @@ session = get_snowflake_session()
 def main():
     """Main application entry point"""
     
-    st.title("🏥 Clinical Control Tower")
-    st.caption("Real-time monitoring of clinical trial enrollment performance")
+    # Title and refresh button in columns
+    title_col, button_col = st.columns([4, 1])
     
+    with title_col:
+        st.title("🏥 Clinical Control Tower")
+        st.caption("Real-time monitoring of clinical trial enrollment performance")
+    
+    with button_col:
+        st.write("")  # Add some vertical spacing
+        if st.button("🔄 Refresh Data", type="primary", help="Reconnect to Snowflake and refresh all data"):
+            # Clear all caches
+            st.cache_resource.clear()
+            st.cache_data.clear()
+            st.success("Data refreshed successfully!")
+            st.rerun()
+            
     if session is None:
         st.error("Cannot connect to Snowflake. Please check your configuration.")
         return
