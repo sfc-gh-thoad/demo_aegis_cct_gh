@@ -72,9 +72,25 @@ def main():
         
         st.divider()
         
+        # Refresh button
+        if st.button("🔄 Refresh Data", use_container_width=True, help="Reconnect to Snowflake and refresh all data"):
+            # Clear all caches
+            st.cache_resource.clear()
+            st.cache_data.clear()
+            st.success("Data refreshed successfully!")
+            st.rerun()
+        
         # Connection status at bottom
         if session:
-            st.info("✓ Connected to Snowflake")
+            # Get connection details from secrets
+            account = st.secrets.get("snowflake", {}).get("account", "Unknown")
+            user = st.secrets.get("snowflake", {}).get("user", "Unknown")
+            role = st.secrets.get("snowflake", {}).get("role", "Unknown")
+            
+            st.info(f"""✓ **Connected to Snowflake**  
+**Account:** `{account}`  
+**User:** `{user}`  
+**Role:** `{role}`""")
         else:
             st.error("✗ Not connected to Snowflake")
     

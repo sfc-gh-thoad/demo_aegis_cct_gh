@@ -1,0 +1,133 @@
+﻿SOP 401: Site Performance & Intervention Playbook
+Document ID: CL-SOP-401-v3.0
+Effective Date: 15-Jan-2024
+Owner: Head of Clinical Operations
+Applies to: All Clinical Research Associates (CRAs), Study Managers, and Clinical Operations Leadership.
+## 1. Purpose & Scope
+1.1. Purpose: This Standard Operating Procedure (SOP) provides a risk-based framework for the identification, triage, and management of underperforming clinical trial sites. The goal is to ensure proactive intervention to mitigate risks to trial timelines, enrollment targets, and data integrity.
+1.2. Scope: This SOP applies to all active, enrolling sites for Phase II and Phase III studies. It is the primary playbook for all personnel responsible for site management and oversight.
+________________
+
+
+## 2. Trigger for Action
+Intervention is automatically triggered when the Clinical Control Tower (CCT) dashboard identifies a site that meets any of the "Red Flag" criteria listed below.
+2.1. Enrollment Triggers:
+* Target Deficit: Enrollment (Actual vs. Plan) is below 80% for two consecutive months.
+* Velocity Failure: The site's 90-day enrollment velocity trends to zero or is < 50% of the planned rate.
+* Screen Failure Rate: The site's Screen Failure Rate deviates from the trial-level average by more than 25% (either high or low), suggesting a protocol adherence or patient pool issue.
+2.2. Operational Triggers:
+* Data Lag: Average Data Entry Lag (from patient visit to EDC entry) exceeds 5 business days.
+* Query Backlog: More than 10 critical data queries are "Open" for longer than 14 days.
+* Task Delinquency: The site has 3 or more Overdue Tasks in the CTMS.
+________________
+
+
+## 3. Triage & Diagnosis (Within 48 Hours)
+When a site is flagged, the assigned Clinical Research Associate (CRA) must perform the following triage within 2 business days:
+1. Analyze CCT Data: Review the site's "Site Deep-Dive" dashboard to identify the specific failure domain (e.g., Enrollment, Data Quality, Task Delinquency).
+2. Contact Site: Call the primary Study Coordinator (SC) to triage the issue. The CRA must use the "Site Triage Questionnaire" (Appendix A - not included) to guide the conversation.
+3. Log Diagnosis: The CRA must create a new monitoring_event__v record in the CTMS, select Visit Type = "Triage Call", and document the diagnosed root cause in the cra_notes field.
+________________
+
+
+## 4. Mitigation Strategies (The "Playbook")
+Based on the diagnosed root cause, execute the following plays.
+Play 1: Operational / Training Fix
+* Root Cause: Site staff is new, untrained, or has process bottlenecks (e.g., sample handling, data entry).
+* Actions:
+   1. Remote Re-Training: The CRA will conduct an immediate (virtual) re-training session with the Study Coordinator and all relevant staff on the specific protocol or system (e.g., EDC, lab kits). All training must be documented in the eTMF.
+   2. Clear Backlog: The CRA will work with the site to set a "Cure Date" (e.g., within 3 days) to clear all Overdue Tasks in the CTMS.
+   3. Monitor: Place the site on a "watch list" in the CCT. If metrics do not improve within 14 days, escalate to Play 3.
+Play 2: Patient Recruitment Boost
+* Root Cause: Site is operationally healthy but has low patient screening volume.
+* Actions:
+   1. Review Prescreening Logs: Ensure the site is actively screening patients in their EMR or clinic. Request copies of de-identified prescreening logs.
+   2. Deploy Recruitment Aids: Authorize budget for sponsor-approved recruitment materials (e.g., patient-facing brochures, social media ad templates).
+   3. Investigate Local Competition: The CRA must investigate if a new competing trial has opened at the site or nearby, which may be "stealing" patient leads.
+   4. Escalate: If unresolved after 30 days, escalate to the Study Manager to model a broader "Scenario 3: Boost Recruitment" campaign.
+Play 3: Low Principal Investigator (PI) Engagement
+* Root Cause: This is a critical risk. The CCT flags Overdue Tasks and cra_notes (e.g., "PI not available for visit," "Staff disengaged") and the Study Coordinator confirms the PI is disengaged.
+* Actions (Escalating):
+   1. CRA-to-PI (Level 1): The CRA must schedule a formal 1-on-1 call with the PI (not just the staff) to re-state the trial's importance, understand their barriers, and confirm their commitment. Document this call in the CTMS.
+   2. Medical Monitor-to-PI (Level 2): If the PI remains disengaged, the CRA escalates to the Sponsor's Medical Monitor (a peer-to-peer, MD-to-MD discussion). This formal medical discussion often resolves scientific or priority-based issues.
+   3. Execute "Site Network Expansion" (Level 3): If the PI is still non-compliant after Level 2, the Study Manager must begin the process to declare the site "non-viable."
+      * Place a formal cap on enrollment at that site.
+      * Execute "Scenario 2: Fix the Sites" by initiating the "New Site Activation" SOP to replace the lost enrollment velocity.
+Play 4: Site Close-Out (Non-Viable)
+* Root Cause: The site has failed Play 3, has had a critical quality or regulatory breach, or has voluntarily withdrawn.
+* Actions:
+   1. Issue Notification: The Study Manager issues a formal "Intent to Terminate" letter to the PI and hospital administration.
+   2. Activate "Site Close-Out" SOP: The CRA must schedule an on-site Close-Out Visit within 30 days.
+   3. Final Reconciliation: All data in EDC must be finalized, all queries resolved, all Investigational Product returned or destroyed, and all regulatory documents filed in the eTMF.
+   4. Hold Final Payment: The final site payment is held until all Close-Out activities are 100% complete and verified.
+SOP 701: Pharmacovigilance & Safety Reporting
+Document ID: CL-SOP-701-v3.0
+Effective Date: 15-Jan-2024
+Owner: Head of Pharmacovigilance
+Applies to: All Clinical Operations, Data Management, and Site Staff involved in Sponsor trials.
+## 7.0 Reporting of Serious Adverse Events (SAEs)
+7.1. Purpose
+This section defines the mandatory, non-negotiable procedures and timelines for the identification, documentation, and reporting of all Serious Adverse Events (SAEs). This ensures the real-time protection of subject safety and maintains full compliance with global regulatory requirements (e.g., FDA 21 CFR 312.32, ICH E2A). Failure to adhere to these timelines is a critical compliance breach.
+7.2. Key Definitions
+* Adverse Event (AE): Any untoward medical occurrence in a patient or clinical investigation subject administered a pharmaceutical product, which does not necessarily have a causal relationship with this treatment.
+* Serious Adverse Event (SAE): As defined in section 7.3, an AE that meets specific criteria for seriousness.
+* Investigator's Brochure (IB): The formal document containing all known pre-clinical and clinical data (including known risks and side effects) of the Investigational Product.
+* Expectedness: An adverse event is "Expected" if its nature or severity is consistent with the information already listed in the "Expected Risks" section of the Investigator's Brochure. An "Unexpected" event is one that is not listed.
+7.3. Definition of a Serious Adverse Event (SAE)
+An SAE is any Adverse Event (AE) that, at any dose, meets one or more of the following criteria. The Principal Investigator (PI) makes the initial determination of seriousness.
+* Results in Death: A report of a fatal outcome.
+* Is Life-Threatening: An event where the patient was at immediate risk of death at the time the event occurred. Note: This does not mean an event that 'might have' caused death if it were more severe.
+* Requires Inpatient Hospitalization or Prolongation of Existing Hospitalization: Any hospital admission for medical reasons, even for less than 24 hours. This does not include hospitalization for pre-planned elective surgery or for social/convenience reasons.
+* Results in Persistent or Significant Disability/Incapacity: A substantial disruption of a person's ability to conduct normal life functions.
+* Is a Congenital Anomaly/Birth Defect: Includes any birth defect identified in an infant born to a subject (male or female) who was participating in the trial.
+* Is an "Important Medical Event": An event that may not be immediately life-threatening but may jeopardize the patient and require medical intervention to prevent one of the other outcomes listed above.
+7.4. Site-Level Reporting Procedure (The 24-Hour Clock)
+1. Awareness: The Principal Investigator (PI) or delegated site staff (Study Coordinator) is responsible for identifying an SAE upon becoming aware of it from any source (e.g., patient phone call, review of hospital records).
+2. 24-Hour Notification: The site must report the SAE to the Sponsor (or their designee, e.g., the CRO) within 24 hours of awareness. This is a non-negotiable timeline, even if the site does not have all information.
+3. Reporting Vehicle: The report must be made by completing the "SAE Report Form" within the EDC (Electronic Data Capture) system. This form will automatically notify the Sponsor's Pharmacovigilance (PV) department.
+4. Minimum Information: The initial 24-hour report must contain the "four minimums" for a valid report:
+   * An identifiable Patient (e.g., Subject ID)
+   * An identifiable Reporter (e.g., the PI)
+   * An identifiable Suspect Product (the Investigational Product)
+   * An identifiable Event (the SAE)
+5. Follow-Up: The site is responsible for providing all requested follow-up information (e.g., hospital discharge summary, lab results, autopsy reports) on the SAE until the event is resolved or stabilized, and the Sponsor's PV team has confirmed no further information is needed.
+7.5. Sponsor (Pharmacovigilance) Procedure
+1. Receipt & Triage (Day 0): Upon automated notification from the EDC, the PV team will log the SAE into the Global Safety Database within 24 hours. A qualified safety physician will perform the initial triage.
+2. Assessment: The assigned PV Safety Physician assesses the event for:
+   * Seriousness: (Confirms the site's assessment).
+   * Causality: (Assesses the likelihood the event was "related," "possibly related," or "unrelated" to the Investigational Product).
+   * Expectedness: (Checks the Investigator's Brochure to determine if the event is "Expected" or "Unexpected").
+3. Data Querying: The PV team will issue data queries directly to the site via the EDC if any information is missing, unclear, or contradictory. This is a high-priority query.
+4. Case Narrative: The PV team will write a formal "Case Narrative" for the event, which is the official medical summary of what occurred.
+7.6. Regulatory Reporting (Expedited Reporting)
+The Sponsor is legally obligated to report critical safety information to Health Authorities (e.g., FDA, EMA) and all participating Investigators.
+* 7-Day Reports: Any SAE that is determined to be serious, unexpected, and fatal or life-threatening must be reported to regulators (e.g., via FDA MedWatch Form 3500A or a CIOMS I Form) no later than 7 calendar days after the sponsor's first awareness.
+* 15-Day Reports: Any SAE that is serious, unexpected, but not fatal or life-threatening must be reported to regulators no later than 15 calendar days after the sponsor's first awareness.
+7.7. Safety Data Reconciliation
+* Purpose: To ensure 100% agreement between the Clinical Database (EDC) and the Global Safety Database (PV) before "Database Lock."
+* Procedure: At least once per month, and again before Database Lock, the Data Management team will run a formal reconciliation report. This report cross-references all SAEs logged in the EDC with all SAE cases logged in the Safety Database.
+* Discrepancy Resolution: Any discrepancies (e.g., an event marked "serious" in EDC but not in the Safety DB, or a mismatch in event terms) must be investigated and resolved by a joint team from PV, Data Management, and the Clinical site.
+________________
+
+
+## 5. Document History
+Version
+	Effective Date
+	Author
+	Summary of Changes
+	v1.0
+	10-Oct-2022
+	J. Smith
+	Initial Draft
+	v2.0
+	12-Dec-2023
+	A. Chen
+	Added CCT integration triggers
+	v3.0
+	15-Jan-2024
+	A. Chen
+	Clarified PI Engagement escalation path (Play 3)
+	## 6. Approvals
+* A. Chen, Head of Clinical Operations
+* B. Davis, Head of Quality Assurance
+* M. Patel, Chief Medical Officer
