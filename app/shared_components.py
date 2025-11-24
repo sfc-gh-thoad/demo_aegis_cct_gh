@@ -160,7 +160,7 @@ def load_agent_info():
     
     try:
         # Query the agent spec to get agent information
-        query = "DESCRIBE AGENT snowflake_intelligence.agents.cct_agent"
+        query = "DESCRIBE AGENT cct_agent"
         result = session.sql(query).collect()
         
         if result and len(result) > 0:

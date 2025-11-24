@@ -79,15 +79,7 @@ def _ai_assistant_fragment():
         
         Error: {str(e)}
         
-        Please configure the Cortex Agent in `.streamlit/secrets.toml`:
-        
-        ```toml
-        [cortex_agent]
-        database = "AEGIS_CCT"
-        schema = "AGENTS"
-        agent = "CCT_CLINICAL_AGENT"
-        model = "claude-4-sonnet"
-        ```
+        Please configure the Cortex Agent in `.streamlit/secrets.toml`
         
         Or ensure your main Snowflake connection has access to the agent.
         """)
