@@ -87,10 +87,7 @@ def main():
             user = st.secrets.get("snowflake", {}).get("user", "Unknown")
             role = st.secrets.get("snowflake", {}).get("role", "Unknown")
             
-            st.info(f"""✓ **Connected to Snowflake**  
-**Account:** `{account}`  
-**User:** `{user}`  
-**Role:** `{role}`""")
+            st.info(f"✓ **Connected to Snowflake**")
         else:
             st.error("✗ Not connected to Snowflake")
     
