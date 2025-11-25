@@ -79,6 +79,8 @@ class CortexAgentChat:
         title: Optional[str] = None,
         chat_input_placeholder: str = "What is your question?",
         verify_ssl: bool = False,
+        warehouse: Optional[str] = None,
+        role: Optional[str] = None,
     ):
         """
         Initialize the Cortex Agent Chat component.
@@ -94,6 +96,8 @@ class CortexAgentChat:
             title: Title to display above the chat (optional)
             chat_input_placeholder: Placeholder text for chat input
             verify_ssl: Whether to verify SSL certificates
+            warehouse: Optional warehouse to use for agent API calls (uses X-Snowflake-Warehouse header)
+            role: Optional role to use for agent API calls (uses X-Snowflake-Role header)
         """
         self.pat = pat
         self.host = host
@@ -105,6 +109,8 @@ class CortexAgentChat:
         self.title = f"Chat with {agent}" if title is None else title
         self.chat_input_placeholder = chat_input_placeholder
         self.verify_ssl = verify_ssl
+        self.warehouse = warehouse
+        self.role = role
         
         # Initialize session state for this chat instance
         if self.session_key not in st.session_state:
@@ -272,14 +278,23 @@ class CortexAgentChat:
         
         url = f"https://{self.host}/api/v2/databases/{self.database}/schemas/{self.schema}/agents/{self.agent}:run"
         
+        # Build headers with optional warehouse and role
+        headers = {
+            "Authorization": f'Bearer {self.pat}',
+            "Content-Type": "application/json",
+        }
+        
+        # Add optional context headers if specified
+        if self.warehouse:
+            headers["X-Snowflake-Warehouse"] = self.warehouse
+        if self.role:
+            headers["X-Snowflake-Role"] = self.role
+        
         try:
             resp = requests.post(
-                    url=url,
+                url=url,
                 data=request_body.to_json(),
-                headers={
-                    "Authorization": f'Bearer {self.pat}',
-                    "Content-Type": "application/json",
-                },
+                headers=headers,
                 stream=True,
                 verify=self.verify_ssl,
             )

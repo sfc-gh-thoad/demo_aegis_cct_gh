@@ -47,7 +47,9 @@ def _ai_assistant_fragment():
                 session_key="cct_agent_chat",
                 title="",  # Empty string to hide title
                 chat_input_placeholder="Ask about trials, enrollment, delays, or site performance...",
-                verify_ssl=False
+                verify_ssl=False,
+                warehouse=agent_config.get("warehouse"),
+                role=agent_config.get("role")
             )
         else:
             # Fallback: use main Snowflake connection
@@ -61,7 +63,9 @@ def _ai_assistant_fragment():
                 session_key="cct_agent_chat",
                 title="",  # Empty string to hide title
                 chat_input_placeholder="Ask about trials, enrollment, delays, or site performance...",
-                verify_ssl=False
+                verify_ssl=False,
+                warehouse=None,
+                role=None
             )
         
         # Store in session state for sidebar access
@@ -79,7 +83,15 @@ def _ai_assistant_fragment():
         
         Error: {str(e)}
         
-        Please configure the Cortex Agent in `.streamlit/secrets.toml`
+        Please configure the Cortex Agent in `.streamlit/secrets.toml`:
+        
+        ```toml
+        [cortex_agent]
+        database = "AEGIS_CCT"
+        schema = "AGENTS"
+        agent = "CCT_CLINICAL_AGENT"
+        model = "claude-4-sonnet"
+        ```
         
         Or ensure your main Snowflake connection has access to the agent.
         """)
